@@ -6,7 +6,7 @@
       <formatter type="plain" usefile="false" />
     </junit>
   </target>
-  <target name="build-test" depends="build" description="Build test software">
+  <target name="build-test" depends="build" description="Build unit tests">
     <mkdir dir="${target/test-classes}" />
     <javac destdir="${target/test-classes}" srcdir="${src/test/java}" classpathref="build-test.path.id" />
   </target>
