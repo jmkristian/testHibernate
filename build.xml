@@ -1,19 +1,24 @@
 <project name="testHibernate" default="test" xmlns:ivy="antlib:org.apache.ivy.ant">
-  <target name="test" depends="build" description="Execute unit tests">
+  <target name="test" depends="build-test" description="Execute unit tests">
     <junit fork="yes" haltonfailure="yes">
       <test name="com.linkedin.test.hibernate.TestConnectionManager" />
-      <classpath refid="run.path.id" />
+      <classpath refid="test.path.id" />
       <formatter type="plain" usefile="false" />
     </junit>
   </target>
-  <target name="build" depends="init" description="Build code and resources">
+  <target name="build-test" depends="build" description="Build test software">
+    <mkdir dir="${target/test-classes}" />
+    <javac destdir="${target/test-classes}" srcdir="${src/test/java}" classpathref="build-test.path.id" />
+  </target>
+  <target name="build" depends="init">
+    <mkdir dir="${target/lib}" />
     <ivy:retrieve /><!-- see ivy.xml -->
-    <mkdir dir="${build.dir}" />
-    <javac destdir="${build.dir}" srcdir="${src.dir}" classpathref="lib.path.id" />
+    <mkdir dir="${target/classes}" />
+    <!-- javac destdir="${target/classes}" srcdir="${src/main/java}" classpathref="build.path.id" / -->
   </target>
   <target name="clean" description="Delete build artifacts">
     <delete includeemptydirs="true" quiet="true">
-      <fileset dir="${build.dir}" />
+      <fileset dir="${target}" />
     </delete>
   </target>
   <target name="init" depends="init-ivy" />

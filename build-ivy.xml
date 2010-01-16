@@ -1,17 +1,30 @@
 <project name="ivy-build" default="init-ivy" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+  <!-- http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html -->
+  <property name="src/main/java"       value="src/main/java" />
+  <property name="src/main/resources"  value="src/main/resources" />
+  <property name="src/test/java"       value="src/test/java" />
+  <property name="src/test/resources"  value="src/test/resources" />
+  <property name="target"              value="target" />
+  <property name="target/lib"          value="${target}/lib" />
+  <property name="target/test-classes" value="${target}/test-classes" />
+  <property name="target/classes"      value="${target}/classes" />
+  <path id="build.path.id">
+    <fileset dir="${target/lib}" includes="*.jar" />
+  </path>
+  <path id="build-test.path.id">
+    <path location="${src/main/resources}" />
+    <path location="${target/classes}" />
+    <path refid="build.path.id" />
+  </path>
+  <path id="test.path.id">
+    <path location="${src/test/resources}" />
+    <path location="${target/test-classes}" />
+    <path refid="build-test.path.id" />
+  </path>
+
   <!-- http://ant.apache.org/ivy/history/latest-milestone/install.html -->
-  <property name="resource.dir" value="resources" />
-  <property name="src.dir" value="src" />
-  <property name="lib.dir" value="lib" />
-  <property name="build.dir" value="build" />
-  <path id="lib.path.id">
-    <fileset dir="${lib.dir}" includes="*.jar" />
-  </path>
-  <path id="run.path.id">
-    <path location="${resource.dir}" />
-    <path location="${build.dir}" />
-    <path refid="lib.path.id" />
-  </path>
+  <property name="ivy.retrieve.pattern" value="${target/lib}/[artifact]-[type]-[revision].[ext]" />
   <property name="ivy.install.version" value="2.1.0" />
   <condition property="ivy.home" value="${env.IVY_HOME}">
     <isset property="env.IVY_HOME" />
