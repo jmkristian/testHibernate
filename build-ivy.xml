@@ -10,7 +10,7 @@
   <property name="target/test-classes" value="${target}/test-classes" />
   <property name="target/classes"      value="${target}/classes" />
   <path id="build.path.id">
-    <fileset dir="${target/lib}" includes="*.jar" />
+    <fileset dir="${target/lib}/jar" includes="*.jar" />
   </path>
   <path id="build-test.path.id">
     <path location="${src/main/resources}" />
@@ -24,7 +24,7 @@
   </path>
 
   <!-- http://ant.apache.org/ivy/history/latest-milestone/install.html -->
-  <property name="ivy.retrieve.pattern" value="${target/lib}/[artifact]-[type]-[revision].[ext]" />
+  <property name="ivy.retrieve.pattern" value="${target/lib}/[type]/[artifact]-[revision].[ext]" />
   <property name="ivy.install.version" value="2.1.0" />
   <condition property="ivy.home" value="${env.IVY_HOME}">
     <isset property="env.IVY_HOME" />
