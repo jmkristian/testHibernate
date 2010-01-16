@@ -1,9 +1,0 @@
-<ivysettings>
-  <settings defaultResolver="public" />
-  <resolvers>
-    <chain name="public">
-      <ibiblio m2compatible="true" name="ibiblio" />
-      <ibiblio m2compatible="true" name="jboss" root="http://repository.jboss.org/maven2/" />
-    </chain>
-  </resolvers>
-</ivysettings>

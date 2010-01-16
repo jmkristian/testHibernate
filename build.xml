@@ -17,5 +17,5 @@
     </delete>
   </target>
   <target name="init" depends="init-ivy" />
-  <import file="ivy-build.xml" />
+  <import file="build-ivy.xml" />
 </project>

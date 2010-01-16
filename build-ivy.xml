@@ -1,4 +1,4 @@
-<project name="init-ivy" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="ivy-build" default="init-ivy" xmlns:ivy="antlib:org.apache.ivy.ant">
   <!-- http://ant.apache.org/ivy/history/latest-milestone/install.html -->
   <property name="resource.dir" value="resources" />
   <property name="src.dir" value="src" />
@@ -19,7 +19,7 @@
   <property name="ivy.home" value="${user.home}/.ant" />
   <property name="ivy.jar.dir" value="${ivy.home}/lib" />
   <property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
-  <target name="init-ivy" depends="download-ivy" description="Initialize Ivy">
+  <target name="init-ivy" depends="download-ivy" description="Define Ant tasks for Ivy">
     <!-- Try to load ivy here from ivy home, in case the user has not already dropped
          it into ant's lib dir (note that the latter copy will always take precedence).
          We will not fail as long as local lib dir exists (it may be empty) and
@@ -31,9 +31,6 @@
   </target>
   <target name="download-ivy" unless="offline">
     <mkdir dir="${ivy.jar.dir}" />
-    <echo message="Downloading ivy..." />
     <get dest="${ivy.jar.file}" usetimestamp="true" src="http://repo2.maven.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/ivy-${ivy.install.version}.jar" />
   </target>
-  <property name="ivy.settings.dir" value="." />
-  <ivy:settings file="${ivy.settings.dir}/ivysettings.xml" />
 </project>
