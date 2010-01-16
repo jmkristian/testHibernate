@@ -1,0 +1,25 @@
+<ivysettings>
+  <settings defaultResolver="public" />
+  <resolvers>
+    <chain name="public">
+      <!--
+        <url name="com.springsource.repository.bundles.release"> <ivy
+        pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"
+        /> <artifact
+        pattern="http://repository.springsource.com/ivy/bundles/release/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"
+        /> </url> <url name="com.springsource.repository.bundles.external"> <ivy
+        pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"
+        /> <artifact
+        pattern="http://repository.springsource.com/ivy/bundles/external/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"
+        /> </url>
+      -->
+      <ibiblio m2compatible="true" name="ibiblio" />
+      <ibiblio m2compatible="true" name="jboss" root="http://repository.jboss.org/maven2/" />
+      <!--
+        <ibiblio name="java-net-maven1" root="http://download.java.net/maven/1" pattern="${java.net.maven.pattern}"
+        m2compatible="false"/> <ibiblio name="java-net-maven2" root="http://download.java.net/maven/2/"
+        m2compatible="true"/>
+      -->
+    </chain>
+  </resolvers>
+</ivysettings>

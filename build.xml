@@ -1,0 +1,33 @@
+<project name="testHibernate" default="test" xmlns:ivy="antlib:org.apache.ivy.ant">
+  <import file="ivy-build.xml" />
+
+  <target name="test" depends="build" description="Execute unit tests">
+    <junit fork="yes" haltonfailure="yes">
+      <test name="com.linkedin.test.hibernate.TestConnectionManager" />
+      <classpath refid="run.path.id" />
+      <formatter type="plain" usefile="false" />
+    </junit>
+    <!--
+    <java classname="com.linkedin.test.hibernate.TestConnectionManager">
+      <classpath>
+        <path refid="run.path.id" />
+      </classpath>
+    </java>
+    -->
+  </target>
+
+  <target name="build" depends="init" description="Build code and resources">
+    <ivy:retrieve />
+    <!-- see ivy.xml -->
+    <mkdir dir="${build.dir}" />
+    <javac destdir="${build.dir}" srcdir="${src.dir}" classpathref="lib.path.id" />
+  </target>
+
+  <target name="clean" description="Delete build artifacts">
+    <delete includeemptydirs="true" quiet="true">
+      <fileset dir="${build.dir}" />
+    </delete>
+  </target>
+
+  <target name="init" depends="init-ivy" />
+</project>

@@ -9,12 +9,18 @@ import org.hibernate.Transaction;
 import org.hibernate.TransactionException;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
+import org.junit.runner.JUnitCore;
 
 /**
  * Test org.hibernate.jdbc.ConnectionManager.
+ * 
  * @author <a href="mailto:jkristian@linkedin.com">John Kristian</a>
  */
 public class TestConnectionManager extends TestCase {
+
+    public static void main(String args[]) {
+        JUnitCore.main(TestConnectionManager.class.getName());
+    }
 
     private static final Log log = LogFactory.getLog(TestConnectionManager.class);
 
